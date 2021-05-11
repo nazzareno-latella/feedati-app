@@ -1,0 +1,24 @@
+{
+    "catalog": [
+        {
+            "name": "Repubblica",
+            "rss": "http://www.repubblica.it/rss/homepage/rss2.0.xml"
+        },
+        {
+            "name": "Corriere della sera",
+            "rss": "http://xml2.corriereobjects.it/rss/homepage.xml"
+        },
+        {
+            "name": "Gazzetta dello sport",
+            "rss": "https://www.gazzetta.it/rss/home.xml"
+        },
+        {
+            "name": "Corriere dello sport",
+            "rss": "https://www.corrieredellosport.it/rss/"
+        },
+        {
+            "name": "Calciomercato",
+            "rss": "https://www.calciomercato.com/feed"
+        }
+    ]
+}  

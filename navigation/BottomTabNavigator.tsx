@@ -7,12 +7,14 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
+import { StyleSheet, Button } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import TabBenvenutoScreen from '../screens/TabBenvenutoScreen';
+import TabLeggiScreen from '../screens/TabLeggiScreen';
+import NotizieScreen from '../screens/NotizieScreen';
+import { BottomTabParamList, TabBenvenutoParamList, TabLeggiParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -21,18 +23,18 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Benvenuto"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="Benvenuto"
+        component={TabBenvenutoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Leggi"
+        component={TabLeggiNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -49,30 +51,49 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const TabBenvenutoStack = createStackNavigator<TabBenvenutoParamList>();
 
-function TabOneNavigator() {
+function TabBenvenutoNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <TabBenvenutoStack.Navigator>
+      <TabBenvenutoStack.Screen
+        name="TabBenvenutoScreen"
+        component={TabBenvenutoScreen}
+        options={{ 
+          headerTitle: ''
+        }}
       />
-    </TabOneStack.Navigator>
+    </TabBenvenutoStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const TabLeggiStack = createStackNavigator<TabLeggiParamList>();
 
-function TabTwoNavigator() {
+function TabLeggiNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <TabLeggiStack.Navigator>
+      <TabLeggiStack.Screen
+        name="TabLeggiScreen"
+        component={TabLeggiScreen}
+        options={{ 
+          headerTitle: ''
+        }}
       />
-    </TabTwoStack.Navigator>
+      <TabLeggiStack.Screen
+        name="NotizieScreen"
+        component={NotizieScreen}
+        options={{ 
+          headerTitle: ''
+        }}
+      />
+    </TabLeggiStack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});
